@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CAPAReport, fetchCAPAReports, generateCAPAReport } from '../api';
-import { FileText, Download, Edit3, Check, AlertCircle, Plus, Building2, ShieldAlert } from 'lucide-react';
+import { FileText, Download, Edit3, Check, AlertCircle, Plus } from 'lucide-react';
 import jsPDF from 'jspdf';
 
 interface CAPAReportViewProps {
@@ -111,18 +111,18 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center space-x-2">
-            <FileText className="h-6 w-6 text-blue-500" />
-            <span>CAPA-Ready Report Generator</span>
+          <h2 className="text-lg font-bold text-slate-900 flex items-center space-x-2">
+            <FileText className="h-5 w-5 text-blue-600" />
+            <span>CAPA-Ready Report Management</span>
           </h2>
-          <p className="text-xs text-slate-400">Automated Corrective & Preventive Action Formulations</p>
+          <p className="text-xs text-slate-500">Automated Corrective & Preventive Action Formulations</p>
         </div>
 
         <div className="flex items-center space-x-3">
           <select
             value={targetSite}
             onChange={(e) => setTargetSite(e.target.value)}
-            className="px-3 py-2 bg-dark-800 border border-slate-700 rounded-xl text-xs text-white"
+            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="SITE-003">SITE-003 (Crestview - Critical Risk)</option>
             <option value="SITE-002">SITE-002 (Beacon)</option>
@@ -133,7 +133,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
 
           <button
             onClick={handleGenerateNew}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-blue-600/20 flex items-center space-x-1.5"
+            className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1.5"
           >
             <Plus className="h-4 w-4" />
             <span>Generate New CAPA</span>
@@ -144,8 +144,8 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
       {/* Main Grid: Report List sidebar + Active Report Editor */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Sidebar List */}
-        <div className="glass-card p-4 rounded-2xl space-y-3">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2">Generated Reports</h3>
+        <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">Generated Reports</h3>
           <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1">
             {reports.map((rep) => (
               <div
@@ -155,48 +155,48 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                   setEditedReport(rep);
                   setIsEditing(false);
                 }}
-                className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border cursor-pointer transition-colors ${
                   selectedReport?.report_id === rep.report_id
-                    ? 'bg-blue-600/20 border-blue-500/40 text-white shadow-md'
-                    : 'bg-slate-800/40 border-slate-700/50 text-slate-300 hover:bg-slate-800'
+                    ? 'bg-blue-50 border-blue-300 text-blue-950 shadow-xs'
+                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-blue-400">{rep.report_id}</span>
+                  <span className="font-mono text-xs font-bold text-blue-600">{rep.report_id}</span>
                   <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full ${
-                    rep.priority === 'Critical' ? 'bg-rose-500/20 text-rose-400' : 'bg-amber-500/20 text-amber-400'
+                    rep.priority === 'Critical' ? 'bg-rose-100 text-rose-800 border border-rose-200' : 'bg-amber-100 text-amber-800 border border-amber-200'
                   }`}>
                     {rep.priority}
                   </span>
                 </div>
-                <p className="text-xs font-medium text-slate-200 mt-1 line-clamp-2">{rep.issue_summary}</p>
-                <span className="text-[10px] text-slate-400 mt-2 block">Site: {rep.site_id}</span>
+                <p className="text-xs font-medium text-slate-900 mt-1 line-clamp-2">{rep.issue_summary}</p>
+                <span className="text-[10px] text-slate-500 mt-2 block">Site: {rep.site_id}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Right Active Report Display / Editor */}
-        <div className="glass-card p-6 rounded-2xl lg:col-span-2 space-y-6">
+        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs lg:col-span-2 space-y-6">
           {selectedReport && editedReport ? (
             <>
               {/* Report Header Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono font-bold text-sm text-blue-400">{selectedReport.report_id}</span>
-                    <span className="px-2.5 py-0.5 text-xs font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-full">
+                    <span className="font-mono font-bold text-sm text-blue-600">{selectedReport.report_id}</span>
+                    <span className="px-2.5 py-0.5 text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 rounded-full">
                       Priority: {selectedReport.priority}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-white mt-1">Site {selectedReport.site_id} Corrective & Preventive Action</h3>
+                  <h3 className="text-base font-bold text-slate-900 mt-1">Site {selectedReport.site_id} Corrective & Preventive Action Report</h3>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 shrink-0">
                   {isEditing ? (
                     <button
                       onClick={handleSaveEdit}
-                      className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl flex items-center space-x-1"
+                      className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1"
                     >
                       <Check className="h-4 w-4" />
                       <span>Save Edits</span>
@@ -204,7 +204,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                   ) : (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700 flex items-center space-x-1"
+                      className="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl border border-slate-300 transition-colors flex items-center space-x-1"
                     >
                       <Edit3 className="h-4 w-4" />
                       <span>Edit Fields</span>
@@ -213,17 +213,17 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
 
                   <button
                     onClick={exportPDF}
-                    className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-blue-600/20 flex items-center space-x-1"
+                    className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1"
                   >
                     <Download className="h-4 w-4" />
-                    <span>Download PDF</span>
+                    <span>Export PDF</span>
                   </button>
                 </div>
               </div>
 
               {/* Regulatory Notice Banner */}
-              <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center space-x-2 text-xs text-amber-300">
-                <AlertCircle className="h-4 w-4 shrink-0" />
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-center space-x-2 text-xs text-amber-900">
+                <AlertCircle className="h-4 w-4 text-amber-600 shrink-0" />
                 <span>Notice: CAPA recommendations are AI-assisted decision support suggestions requiring qualified human review prior to submission.</span>
               </div>
 
@@ -231,76 +231,76 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
               <div className="space-y-4 text-xs">
                 {/* Issue Summary */}
                 <div className="space-y-1">
-                  <label className="font-bold text-slate-400 uppercase tracking-wider">1. Issue Summary</label>
+                  <label className="font-bold text-slate-500 uppercase tracking-wider">1. Issue Summary</label>
                   {isEditing ? (
                     <textarea
                       value={editedReport.issue_summary}
                       onChange={(e) => setEditedReport({ ...editedReport, issue_summary: e.target.value })}
-                      className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white font-sans text-xs focus:border-blue-500"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                       rows={2}
                     />
                   ) : (
-                    <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.issue_summary}</p>
+                    <p className="p-3 bg-slate-50 rounded-xl text-slate-800 border border-slate-200">{selectedReport.issue_summary}</p>
                   )}
                 </div>
 
                 {/* Observations */}
                 <div className="space-y-1">
-                  <label className="font-bold text-slate-400 uppercase tracking-wider">2. Detailed Observations</label>
+                  <label className="font-bold text-slate-500 uppercase tracking-wider">2. Detailed Observations</label>
                   {isEditing ? (
                     <textarea
                       value={editedReport.observations}
                       onChange={(e) => setEditedReport({ ...editedReport, observations: e.target.value })}
-                      className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white font-sans text-xs focus:border-blue-500"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                       rows={2}
                     />
                   ) : (
-                    <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.observations}</p>
+                    <p className="p-3 bg-slate-50 rounded-xl text-slate-800 border border-slate-200">{selectedReport.observations}</p>
                   )}
                 </div>
 
                 {/* Root Cause */}
                 <div className="space-y-1">
-                  <label className="font-bold text-slate-400 uppercase tracking-wider">3. Root Cause Analysis</label>
+                  <label className="font-bold text-slate-500 uppercase tracking-wider">3. Root Cause Analysis</label>
                   {isEditing ? (
                     <textarea
                       value={editedReport.root_cause}
                       onChange={(e) => setEditedReport({ ...editedReport, root_cause: e.target.value })}
-                      className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white font-sans text-xs focus:border-blue-500"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                       rows={2}
                     />
                   ) : (
-                    <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.root_cause}</p>
+                    <p className="p-3 bg-slate-50 rounded-xl text-slate-800 border border-slate-200">{selectedReport.root_cause}</p>
                   )}
                 </div>
 
                 {/* Grid for Actions */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="font-bold text-emerald-400 uppercase tracking-wider">4. Immediate Corrective Action</label>
+                    <label className="font-bold text-emerald-700 uppercase tracking-wider">4. Immediate Corrective Action</label>
                     {isEditing ? (
                       <textarea
                         value={editedReport.corrective_action}
                         onChange={(e) => setEditedReport({ ...editedReport, corrective_action: e.target.value })}
-                        className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white font-sans text-xs focus:border-blue-500"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         rows={3}
                       />
                     ) : (
-                      <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.corrective_action}</p>
+                      <p className="p-3 bg-emerald-50/60 rounded-xl text-emerald-950 border border-emerald-200">{selectedReport.corrective_action}</p>
                     )}
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-blue-400 uppercase tracking-wider">5. Preventive Action</label>
+                    <label className="font-bold text-blue-700 uppercase tracking-wider">5. Preventive Action</label>
                     {isEditing ? (
                       <textarea
                         value={editedReport.preventive_action}
                         onChange={(e) => setEditedReport({ ...editedReport, preventive_action: e.target.value })}
-                        className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white font-sans text-xs focus:border-blue-500"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         rows={3}
                       />
                     ) : (
-                      <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.preventive_action}</p>
+                      <p className="p-3 bg-blue-50/60 rounded-xl text-blue-950 border border-blue-200">{selectedReport.preventive_action}</p>
                     )}
                   </div>
                 </div>
@@ -308,37 +308,37 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                 {/* Responsible role & followup */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="font-bold text-slate-400 uppercase tracking-wider">6. Responsible Role</label>
+                    <label className="font-bold text-slate-500 uppercase tracking-wider">6. Responsible Role</label>
                     {isEditing ? (
                       <input
                         type="text"
                         value={editedReport.responsible_role}
                         onChange={(e) => setEditedReport({ ...editedReport, responsible_role: e.target.value })}
-                        className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white text-xs"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                       />
                     ) : (
-                      <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.responsible_role}</p>
+                      <p className="p-3 bg-slate-50 rounded-xl text-slate-800 border border-slate-200">{selectedReport.responsible_role}</p>
                     )}
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-slate-400 uppercase tracking-wider">7. Follow-Up Recommendation</label>
+                    <label className="font-bold text-slate-500 uppercase tracking-wider">7. Follow-Up Recommendation</label>
                     {isEditing ? (
                       <input
                         type="text"
                         value={editedReport.followup_recommendation}
                         onChange={(e) => setEditedReport({ ...editedReport, followup_recommendation: e.target.value })}
-                        className="w-full p-3 bg-dark-800 border border-slate-700 rounded-xl text-white text-xs"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                       />
                     ) : (
-                      <p className="p-3 bg-slate-800/40 rounded-xl text-slate-200 border border-slate-700/40">{selectedReport.followup_recommendation}</p>
+                      <p className="p-3 bg-slate-50 rounded-xl text-slate-800 border border-slate-200">{selectedReport.followup_recommendation}</p>
                     )}
                   </div>
                 </div>
               </div>
             </>
           ) : (
-            <div className="flex justify-center items-center h-64 text-slate-400 text-xs">
+            <div className="flex justify-center items-center h-64 text-slate-500 text-xs">
               Select or generate a CAPA report to view details.
             </div>
           )}
