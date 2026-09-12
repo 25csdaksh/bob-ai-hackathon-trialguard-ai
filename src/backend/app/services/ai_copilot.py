@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 from ..models.domain import Site, Patient, Visit, Deviation, CAPAReport
 from .capa_generator import generate_capa_report
 
-WATSONX_API_KEY = os.environ.get("WATSONX_API_KEY") or os.environ.get("BOB_API_KEY") or os.environ.get("IBM_BOB_API_KEY")
+BOB_API_KEY = os.environ.get("BOB_API_KEY")
+WATSONX_API_KEY = os.environ.get("WATSONX_API_KEY")
 WATSONX_URL = os.environ.get("WATSONX_URL", "https://us-south.ml.cloud.ibm.com")
 WATSONX_PROJECT_ID = os.environ.get("WATSONX_PROJECT_ID")
 
