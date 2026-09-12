@@ -5,10 +5,11 @@ import { SitesView } from './components/SitesView';
 import { SiteDetailModal } from './components/SiteDetailModal';
 import { DeviationsView } from './components/DeviationsView';
 import { DeviationDetailModal } from './components/DeviationDetailModal';
+import { RiskAnalysisView } from './components/RiskAnalysisView';
 import { CAPAReportView } from './components/CAPAReportView';
 import { AICopilotDrawer } from './components/AICopilotDrawer';
 import { fetchDashboardMetrics, fetchSites, fetchDeviations, DashboardMetrics, SiteDetail, Deviation } from './api';
-import { ShieldAlert, Activity, Building2, AlertTriangle, FileText, Settings, Info, ChevronRight, Sparkles } from 'lucide-react';
+import { ShieldAlert, Activity, Building2, AlertTriangle, FileText, BarChart3, Bot, ChevronRight, Sparkles } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -59,32 +60,36 @@ export function App() {
     { id: 'dashboard', label: 'Dashboard', icon: Activity },
     { id: 'sites', label: 'Sites & Risk', icon: Building2, count: sites.length },
     { id: 'deviations', label: 'Deviation Log', icon: AlertTriangle, count: deviations.length },
+    { id: 'risk-analysis', label: 'Risk Analysis', icon: BarChart3 },
     { id: 'capa', label: 'CAPA Reports', icon: FileText },
   ];
 
   return (
-    <div className="min-h-screen flex bg-satin-50 text-slate-900 font-sans antialiased">
-      {/* LEFT SIDEBAR NAVIGATION */}
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 hidden md:flex">
+    <div className="min-h-screen flex bg-[#F8FAFC] text-slate-900 font-sans antialiased">
+      {/* LEFT SIDEBAR NAVIGATION - Dark Forest Green Theme */}
+      <aside className="w-64 bg-[#064E3B] text-white flex flex-col shrink-0 hidden md:flex border-r border-[#047857]/30 shadow-xl">
         {/* Sidebar Header / Branding */}
-        <div className="p-5 border-b border-slate-100 flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-          <div className="p-2.5 bg-bottle-900 rounded-xl shadow-xs text-white">
-            <ShieldAlert className="h-5 w-5" />
+        <div className="p-5 border-b border-[#047857]/40 flex items-start space-x-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
+          <div className="p-2.5 bg-[#022C22] rounded-2xl shadow-inner text-emerald-400 border border-emerald-500/20 shrink-0">
+            <ShieldAlert className="h-6 w-6" />
           </div>
           <div>
             <div className="flex items-center space-x-1.5">
-              <span className="font-extrabold text-base tracking-tight text-slate-900">TrialGuard</span>
-              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-bottle-50 text-bottle-800 border border-bottle-200 rounded-md">
+              <span className="font-extrabold text-base tracking-tight text-white">TrialGuard</span>
+              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-[#10B981] text-[#022C22] rounded-md uppercase tracking-wider">
                 AI
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium">Risk Intelligence Platform</p>
+            <p className="text-[11px] text-emerald-200/80 font-medium leading-tight mt-0.5">Clinical Trial Risk Intelligence</p>
+            <p className="text-[9px] text-emerald-300/60 font-semibold tracking-tight mt-1.5 italic">
+              Detect Earlier. Prioritize Smarter. Act Faster.
+            </p>
           </div>
         </div>
 
         {/* Navigation Menu */}
         <div className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          <p className="px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Main Navigation</p>
+          <p className="px-3 text-[10px] font-bold text-emerald-300/70 uppercase tracking-widest mb-2">Main Navigation</p>
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -92,19 +97,19 @@ export function App() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
                   isActive
-                    ? 'bg-bottle-50 text-bottle-900 border border-bottle-200/80 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-transparent'
+                    ? 'bg-[#047857] text-white shadow-sm border border-emerald-400/20'
+                    : 'text-emerald-100/70 hover:text-white hover:bg-[#047857]/40 border border-transparent'
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <Icon className={`h-4 w-4 ${isActive ? 'text-bottle-800' : 'text-slate-400'}`} />
+                  <Icon className={`h-4 w-4 ${isActive ? 'text-emerald-300' : 'text-emerald-200/60'}`} />
                   <span>{item.label}</span>
                 </div>
                 {item.count !== undefined && (
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                    isActive ? 'bg-bottle-100 text-bottle-900' : 'bg-slate-100 text-slate-600'
+                    isActive ? 'bg-[#022C22] text-emerald-300' : 'bg-[#047857]/60 text-emerald-100'
                   }`}>
                     {item.count}
                   </span>
@@ -114,28 +119,29 @@ export function App() {
           })}
         </div>
 
-        {/* Sidebar Banner / Promotion */}
-        <div className="p-3 mx-3 mb-4 bg-gradient-to-br from-bottle-50 to-emerald-50 border border-bottle-100 rounded-2xl">
-          <div className="flex items-center space-x-2 text-bottle-900 font-bold text-xs">
-            <Sparkles className="h-4 w-4 text-bottle-700" />
-            <span>IBM Bob Copilot</span>
+        {/* Sidebar Banner / Copilot Trigger */}
+        <div className="p-3.5 mx-3 mb-4 bg-[#022C22]/80 border border-emerald-500/20 rounded-2xl">
+          <div className="flex items-center space-x-2 text-emerald-300 font-bold text-xs">
+            <Sparkles className="h-4 w-4 text-[#10B981]" />
+            <span>IBM Bob AI Copilot</span>
           </div>
-          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-            Database-grounded clinical risk Q&A assistant.
+          <p className="text-[11px] text-emerald-100/70 mt-1 leading-snug">
+            Grounded decision support for site telemetry & CAPA.
           </p>
           <button
             onClick={() => setIsCopilotOpen(true)}
-            className="mt-2.5 w-full py-1.5 bg-bottle-900 hover:bg-bottle-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-1"
+            className="mt-3 w-full py-2 bg-[#10B981] hover:bg-[#059669] text-[#022C22] font-extrabold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-1"
           >
-            <span>Open Assistant</span>
+            <Bot className="h-3.5 w-3.5 mr-1" />
+            <span>Ask Copilot</span>
             <ChevronRight className="h-3 w-3" />
           </button>
         </div>
 
         {/* Footer Info */}
-        <div className="p-4 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
+        <div className="p-4 border-t border-[#047857]/40 text-[10px] text-emerald-200/60 flex items-center justify-between font-mono">
           <span>IBM Hackathon 2026</span>
-          <span className="px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded text-[10px]">v1.0</span>
+          <span className="px-1.5 py-0.5 bg-[#022C22] text-emerald-300 rounded text-[10px]">v1.0</span>
         </div>
       </aside>
 
@@ -149,13 +155,13 @@ export function App() {
         />
 
         {/* Mobile Nav Tabs Bar */}
-        <div className="md:hidden flex items-center space-x-1 px-4 py-2 bg-white border-b border-slate-200 overflow-x-auto">
+        <div className="md:hidden flex items-center space-x-1 px-4 py-2 bg-[#064E3B] text-white border-b border-emerald-700 overflow-x-auto">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap ${
-                activeTab === item.id ? 'bg-bottle-900 text-white' : 'text-slate-600 bg-slate-100'
+                activeTab === item.id ? 'bg-[#10B981] text-[#022C22] font-bold' : 'text-emerald-100 bg-[#047857]/50'
               }`}
             >
               {item.label}
@@ -185,6 +191,15 @@ export function App() {
             <DeviationsView
               deviations={deviations}
               onSelectDeviation={(dev) => setSelectedDeviation(dev)}
+            />
+          )}
+
+          {activeTab === 'risk-analysis' && (
+            <RiskAnalysisView
+              metrics={metrics}
+              sites={sites}
+              onSelectSite={(id) => setSelectedSiteId(id)}
+              onNavigateTab={(tab) => setActiveTab(tab)}
             />
           )}
 

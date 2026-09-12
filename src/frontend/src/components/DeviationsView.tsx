@@ -27,11 +27,11 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
   const getSeverityBadge = (sev: string) => {
     switch (sev) {
       case 'Major':
-        return <span className="px-2.5 py-0.5 bg-rose-50 border border-rose-200 text-rose-700 font-bold text-xs rounded-full">Major</span>;
+        return <span className="px-2.5 py-0.5 bg-rose-50 border border-rose-200 text-rose-700 font-bold text-xs rounded-full">MAJOR</span>;
       case 'Minor':
-        return <span className="px-2.5 py-0.5 bg-amber-50 border border-amber-200 text-amber-700 font-bold text-xs rounded-full">Minor</span>;
+        return <span className="px-2.5 py-0.5 bg-amber-50 border border-amber-200 text-amber-700 font-bold text-xs rounded-full">MINOR</span>;
       default:
-        return <span className="px-2.5 py-0.5 bg-bottle-50 border border-bottle-200 text-bottle-800 font-bold text-xs rounded-full">Administrative</span>;
+        return <span className="px-2.5 py-0.5 bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs rounded-full">ADMINISTRATIVE</span>;
     }
   };
 

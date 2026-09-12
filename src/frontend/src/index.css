@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#FAFBF9] text-slate-900 antialiased selection:bg-emerald-100 selection:text-emerald-950;
+    @apply bg-[#F8FAFC] text-slate-900 antialiased selection:bg-emerald-100 selection:text-emerald-950;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   

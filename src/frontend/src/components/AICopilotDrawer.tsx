@@ -174,11 +174,11 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
             e.preventDefault();
             handleSendPrompt(input);
           }}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 mb-1.5"
         >
           <input
             type="text"
-            placeholder="Ask AI Copilot about trial risk..."
+            placeholder="Ask about sites, deviations, risks, or CAPA recommendations..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 px-4 py-2 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600 shadow-xs"
@@ -191,6 +191,9 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
             <Send className="h-4 w-4" />
           </button>
         </form>
+        <p className="text-[10px] text-center text-slate-400 font-medium">
+          Responses are grounded in current trial data.
+        </p>
       </div>
     </div>
   );

@@ -288,6 +288,66 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Priority Sites Oversight Table */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div className="p-5 border-b border-slate-200 flex items-center justify-between">
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Priority Clinical Trial Sites Oversight</h3>
+            <p className="text-xs text-slate-500">Real-time risk scoring and compliance status</p>
+          </div>
+          <button
+            onClick={() => onNavigateTab('sites')}
+            className="text-xs text-bottle-800 hover:text-bottle-950 font-bold flex items-center space-x-1"
+          >
+            <span>View All Sites</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+              <tr>
+                <th className="p-4">Site ID</th>
+                <th className="p-4">Site Name</th>
+                <th className="p-4">Risk Score</th>
+                <th className="p-4">Risk Level</th>
+                <th className="p-4">Total Deviations</th>
+                <th className="p-4 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              {metrics.site_risk_ranking.map((site) => (
+                <tr key={site.site_id} className="hover:bg-slate-50 transition-colors">
+                  <td className="p-4 font-mono font-bold text-bottle-800">{site.site_id}</td>
+                  <td className="p-4 font-bold text-slate-900">{site.site_name}</td>
+                  <td className="p-4 font-mono font-bold text-slate-900">{site.risk_score} / 100</td>
+                  <td className="p-4">
+                    <span className={`px-2.5 py-0.5 text-xs font-bold rounded-full border ${
+                      site.risk_level.toUpperCase() === 'CRITICAL' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                      site.risk_level.toUpperCase() === 'HIGH' ? 'bg-orange-50 text-orange-700 border-orange-200' :
+                      site.risk_level.toUpperCase() === 'MEDIUM' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+                      'bg-emerald-50 text-emerald-700 border-emerald-200'
+                    }`}>
+                      {site.risk_level.toUpperCase()}
+                    </span>
+                  </td>
+                  <td className="p-4 font-bold text-slate-900">{site.total_deviations}</td>
+                  <td className="p-4 text-right">
+                    <button
+                      onClick={() => onSelectSite(site.site_id)}
+                      className="px-3 py-1 bg-slate-100 hover:bg-bottle-900 text-slate-700 hover:text-white rounded-lg text-xs font-semibold transition-colors"
+                    >
+                      Inspect
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
