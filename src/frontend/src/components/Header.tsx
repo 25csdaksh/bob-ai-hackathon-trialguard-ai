@@ -32,8 +32,17 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Header Title & Subtitle */}
           <div className="flex-1 min-w-0">
-            <h1 className="text-lg font-bold text-slate-900 tracking-tight truncate">{title}</h1>
-            <p className="text-xs text-slate-500 truncate hidden sm:block">{subtitle}</p>
+            <div className="flex items-center space-x-2">
+              <h1 className="text-lg font-extrabold text-slate-900 tracking-tight truncate">{title}</h1>
+              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1"></span>
+                Telemetry Live
+              </span>
+              <span className="hidden xl:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold bg-slate-100 text-slate-600 rounded-md border border-slate-200 shrink-0">
+                TG-2026-ONC
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 font-medium truncate hidden sm:block mt-0.5">{subtitle}</p>
           </div>
 
           {/* Global Search Input */}

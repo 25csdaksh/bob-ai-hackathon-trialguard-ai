@@ -71,48 +71,48 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* Top 4 KPI Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 border-t-2 border-t-bottle-800 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Sites</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Active Sites</span>
             <div className="p-2 bg-bottle-50 rounded-xl text-bottle-800 border border-bottle-100">
               <Building2 className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-3">
             <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">{metrics.total_sites} Sites</h2>
-            <p className="text-xs text-slate-500 mt-1">Multi-Center Trial Oversight</p>
+            <p className="text-[11px] text-slate-500 font-medium mt-1">Multi-Center Trial Oversight</p>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 border-t-2 border-t-bottle-800 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Patients</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Patients</span>
             <div className="p-2 bg-bottle-50 rounded-xl text-bottle-800 border border-bottle-100">
               <Users className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-3">
             <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">{metrics.total_patients} Enrolled</h2>
-            <p className="text-xs text-slate-500 mt-1">Active Study Subjects</p>
+            <p className="text-[11px] text-slate-500 font-medium mt-1">Active Study Subjects</p>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 border-t-2 border-t-emerald-600 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Visits Evaluated</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Visits Evaluated</span>
             <div className="p-2 bg-emerald-50 rounded-xl text-emerald-600 border border-emerald-100">
               <Calendar className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-3">
             <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">{metrics.total_visits} Visits</h2>
-            <p className="text-xs text-slate-500 mt-1">Rule Engine Active Monitoring</p>
+            <p className="text-[11px] text-slate-500 font-medium mt-1">Rule Engine Active Monitoring</p>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 border-t-2 border-t-amber-500 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Protocol Deviations</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Protocol Deviations</span>
             <div className="p-2 bg-amber-50 rounded-xl text-amber-600 border border-amber-100">
               <AlertTriangle className="h-4 w-4" />
             </div>
@@ -120,11 +120,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="mt-3">
             <div className="flex items-baseline space-x-2">
               <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">{metrics.total_deviations} Total</h2>
-              <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
+              <span className="text-[11px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
                 {metrics.major_deviations} Major
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-1">Auto-Classified Severity</p>
+            <p className="text-[11px] text-slate-500 font-medium mt-1">Auto-Classified Severity</p>
           </div>
         </div>
       </div>
