@@ -2,7 +2,10 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DB_PATH = os.environ.get("DATABASE_URL", "sqlite:///./trialguard.db")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DEFAULT_DB = f"sqlite:///{os.path.join(BASE_DIR, 'trialguard.db')}"
+
+DB_PATH = os.environ.get("DATABASE_URL", DEFAULT_DB)
 
 engine = create_engine(
     DB_PATH,

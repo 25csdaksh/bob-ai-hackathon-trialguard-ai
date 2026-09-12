@@ -35,36 +35,39 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   return (
     <div className="space-y-6 pb-12">
       {/* Top Banner Alert if High Risk Site present */}
-      {metrics.high_risk_sites_count > 0 && (
-        <div className="p-4 bg-gradient-to-r from-rose-900/40 via-dark-800 to-dark-800 border border-rose-500/30 rounded-2xl flex items-center justify-between shadow-xl">
-          <div className="flex items-center space-x-3">
-            <div className="p-3 bg-rose-500/20 rounded-xl border border-rose-500/30 text-rose-400">
-              <ShieldAlert className="h-6 w-6" />
+      {metrics.high_risk_sites_count > 0 && metrics.site_risk_ranking.length > 0 && (() => {
+        const topSite = metrics.site_risk_ranking[0];
+        return (
+          <div className="p-4 bg-gradient-to-r from-rose-900/40 via-dark-800 to-dark-800 border border-rose-500/30 rounded-2xl flex items-center justify-between shadow-xl">
+            <div className="flex items-center space-x-3">
+              <div className="p-3 bg-rose-500/20 rounded-xl border border-rose-500/30 text-rose-400">
+                <ShieldAlert className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-base">Critical Site Risk Alert: {topSite.site_name} ({topSite.site_id})</h3>
+                <p className="text-xs text-rose-200/80">
+                  {topSite.site_id} risk score has reached <span className="font-bold text-rose-400">{topSite.risk_score}/100 ({topSite.risk_level.toUpperCase()})</span> driven by {topSite.major_deviations} major protocol deviations.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold text-white text-base">Critical Site Risk Alert: Site C (Crestview Research)</h3>
-              <p className="text-xs text-rose-200/80">
-                Site C risk score has reached <span className="font-bold text-rose-400">87/100 (CRITICAL)</span> driven by 8 major protocol deviations and prohibited medication incidents.
-              </p>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => onSelectSite(topSite.site_id)}
+                className="px-3.5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-rose-600/20 transition-all flex items-center space-x-1"
+              >
+                <span>Inspect {topSite.site_id}</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => openCopilotPrompt(`Why is ${topSite.site_id} high risk?`)}
+                className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-all"
+              >
+                Ask AI Copilot
+              </button>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => onSelectSite('SITE-003')}
-              className="px-3.5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-rose-600/20 transition-all flex items-center space-x-1"
-            >
-              <span>Inspect Site C</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => openCopilotPrompt("Why is Site C high risk?")}
-              className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-all"
-            >
-              Ask AI Copilot
-            </button>
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
