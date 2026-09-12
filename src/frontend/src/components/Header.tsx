@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
             <input
               type="text"
               placeholder="Search sites, patients, deviations..."
-              className="w-full pl-9 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600 focus:bg-white transition-all"
+              className="w-full pl-9 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#059669] focus:bg-white transition-all"
             />
           </div>
 
@@ -70,25 +70,25 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
             {/* Notification Bell */}
             <button className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors relative">
               <Bell className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-bottle-600 rounded-full ring-2 ring-white"></span>
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-[#059669] rounded-full ring-2 ring-white"></span>
             </button>
 
             {/* IBM Bob Copilot Button */}
             <button
               onClick={toggleCopilot}
-              className="flex items-center space-x-2 px-3.5 py-1.5 bg-bottle-900 hover:bg-bottle-950 text-white text-xs font-semibold rounded-xl shadow-sm transition-all active:scale-95"
+              className="flex items-center space-x-2 px-3.5 py-1.5 bg-[#064E3B] hover:bg-[#047857] text-white text-xs font-semibold rounded-xl shadow-xs transition-all active:scale-95"
             >
-              <Bot className="h-4 w-4" />
-              <span className="hidden sm:inline">IBM Bob Copilot</span>
+              <Bot className="h-4 w-4 text-emerald-300" />
+              <span className="hidden sm:inline">AI Copilot</span>
             </button>
 
             {/* User Profile */}
             <div className="pl-2 border-l border-slate-200 flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-xl bg-bottle-100 border border-bottle-200 flex items-center justify-center text-bottle-900 font-bold text-xs">
-                SJ
+              <div className="h-8 w-8 rounded-xl bg-[#064E3B] border border-emerald-600/30 flex items-center justify-center text-white font-bold text-xs">
+                DS
               </div>
               <div className="hidden lg:block text-left">
-                <p className="text-xs font-semibold text-slate-800 leading-tight">Dr. Sarah Jenkins</p>
+                <p className="text-xs font-semibold text-slate-800 leading-tight">Dr. Daksh Soni</p>
                 <p className="text-[10px] text-slate-500 leading-tight">Lead Clinical Auditor</p>
               </div>
             </div>
