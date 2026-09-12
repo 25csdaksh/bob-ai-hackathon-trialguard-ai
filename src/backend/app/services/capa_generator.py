@@ -53,12 +53,26 @@ def generate_capa_report(db: Session, site_id: str, deviation_id: str = None, cu
         # Site-wide CAPA report
         issue_summary = f"Comprehensive Site Risk CAPA for {site.site_name} (Risk Score: {site.risk_score} - {site.risk_level} Risk)."
         observations = f"Site currently has {site.total_deviations} total protocol deviations, including {site.major_deviations} major deviations. Trend: {site.trend}."
-        root_cause = f"Systemic site operational vulnerabilities identified. Key contributing factors: {site.risk_factors}."
-        corrective_action = "Initiate immediate Targeted On-Site Clinical Monitoring Visit and suspend new patient enrollment pending protocol re-training."
-        preventive_action = "Mandate comprehensive GCP (Good Clinical Practice) and protocol protocol refresher training for all site trial staff."
-        priority = "Critical" if site.risk_score > 60 else "High"
-        responsible_role = "Lead Clinical Monitor & Quality Assurance Manager"
-        followup = "Re-evaluate site risk score in 30 days following CAPA implementation."
+        root_cause = f"Systemic site operational drivers identified. Key contributing factors: {site.risk_factors}."
+
+        if site.risk_score > 60.0:  # High / Critical Risk
+            corrective_action = "Initiate immediate Targeted On-Site Clinical Monitoring Visit and suspend new patient enrollment pending protocol re-training."
+            preventive_action = "Mandate comprehensive GCP (Good Clinical Practice) and protocol refresher training for all site trial staff."
+            priority = "Critical"
+            responsible_role = "Lead Clinical Monitor & Quality Assurance Manager"
+            followup = "Re-evaluate site risk score in 30 days following CAPA implementation."
+        elif site.risk_score > 30.0:  # Medium Risk
+            corrective_action = "Schedule focused virtual quality review with site coordinator to address minor visit timing and lab collection delays."
+            preventive_action = "Provide pre-printed visit scheduling checklists and secondary lab collection reminders to site staff."
+            priority = "Medium"
+            responsible_role = "Clinical Research Associate (CRA)"
+            followup = "Review site metrics at next bi-weekly monitoring check."
+        else:  # Low Risk (e.g. SITE-004)
+            corrective_action = "Maintain routine clinical trial monitoring schedule; no immediate corrective intervention required."
+            preventive_action = "Continue standard Good Clinical Practice (GCP) quality checks and routine investigator site updates."
+            priority = "Low"
+            responsible_role = "Routine Site Monitor"
+            followup = "Re-assess site performance at next scheduled routine monitoring visit."
 
     if custom_notes:
         observations += f"\nAdditional Context: {custom_notes}"
