@@ -1,6 +1,6 @@
-# 🚀 [Your Project Title Here]
+# 🛡️ TrialGuard AI — Clinical Trial Risk Monitor & Protocol Deviation Detector
 
-> ⚠️ **Replace everything in `[ ]` brackets with your actual content before submission.**
+> **IBM Bob AI Innovation Hackathon 2026 Submission (AI Track)**
 
 ---
 
@@ -8,36 +8,33 @@
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
-| **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Name** | TrialGuard Squad |
+| **Track** | AI Track |
+| **Team Lead** | Daksh Soni — `25cs102@charusat.edu.in` |
+| **Members** | Daksh Soni |
 
 ---
 
 ## 🎯 Problem Statement
 
-> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
-
-[Describe the real-world problem your project addresses. Be specific about who the user is and what pain point they face.]
+Clinical trials can involve thousands of patient visits across multiple research sites. Critical protocol deviations—such as missed safety visits, incorrect investigational drug dosing, prohibited concomitant medication usage, and omitted laboratory blood draws—often remain undetected until routine monitoring or post-trial audits. Delayed detection compromises patient safety, risks regulatory rejection, causes costly trial delays, and impairs data integrity.
 
 ---
 
 ## 💡 Solution
 
-> In 2–3 sentences: What did you build? How does it solve the problem above?
-
-[Describe your solution clearly. Explain the core mechanism — what makes it work.]
+**TrialGuard AI** is an intelligent clinical trial risk monitoring and decision-support system. Powered by a protocol rule engine and grounded AI telemetry, it continuously evaluates synthetic trial data to detect deviations, automatically classifies severity (Major, Minor, Administrative), calculates a 0–100 site risk score with explainable contributing factors, drafts CAPA-ready reports, and provides an interactive **IBM Bob AI Copilot**.
 
 ---
 
 ## ✨ Key Features
 
-- **Feature 1:** [Brief description — e.g., "Real-time anomaly detection using watsonx.ai"]
-- **Feature 2:** [Brief description]
-- **Feature 3:** [Brief description]
-- **Feature 4:** [Optional]
-- **Feature 5:** [Optional]
+- **📊 Clinical Trial Executive Dashboard**: Real-time KPI metrics for total patients, sites, visits, detected deviations, severity breakdowns, and high-risk site alerts.
+- **🔍 Protocol Deviation Detector**: Automated detection of 6 core deviation types (Missed Visit, Late Visit, Incorrect Dose, Prohibited Medication, Missing Required Lab, Rule Violation) comparing expected vs. actual parameters.
+- **🏷️ Prototype Severity Classification**: Categorizes deviations into Major, Minor, and Administrative severity tiers using configurable demo rules.
+- **📈 Site Risk Scoring (0–100)**: Calculates site-level risk scores, risk levels (Low, Medium, High, Critical), trend indicators, and primary risk drivers.
+- **📋 CAPA Report Generator**: Generates structured, editable Corrective & Preventive Action plans (Root Cause, Corrective Action, Preventive Action, Priority, Follow-up) with client-side PDF export.
+- **🤖 IBM Bob AI Copilot**: Interactive natural language assistant answering queries ("Why is Site C high risk?", "Show major deviations") grounded in live database telemetry with watsonx.ai REST integration and deterministic fallback.
 
 ---
 
@@ -45,77 +42,100 @@
 
 | Category | Technologies |
 |---|---|
-| **Languages** | [e.g., Python, TypeScript] |
-| **Frameworks** | [e.g., FastAPI, React] |
-| **IBM Technologies** | [e.g., watsonx.ai, IBM Bob, IBM Cloud] |
-| **Databases** | [e.g., PostgreSQL, Redis] |
-| **Other** | [e.g., Docker, GitHub Actions] |
+| **Languages** | Python 3.10+, TypeScript, SQL, HTML5/CSS3 |
+| **Backend** | FastAPI, SQLAlchemy, Pydantic v2, Uvicorn |
+| **Frontend** | React 18, Vite, Tailwind CSS, Recharts, Lucide Icons, jsPDF |
+| **IBM Technologies** | IBM watsonx.ai API, IBM Bob AI Copilot |
+| **Database** | SQLite (PostgreSQL compatible ORM schema) |
+| **DevOps & QA** | GitHub Actions Workflow Validation |
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── src/                  # All source code
-├── docs/                 # Written documentation
+├── src/
+│   ├── backend/          # FastAPI Python backend (services, models, API routes)
+│   │   ├── app/
+│   │   │   ├── api/      # REST API endpoints (dashboard, sites, deviations, capa, copilot)
+│   │   │   ├── database/ # SQLAlchemy session & engine
+│   │   │   ├── models/   # Domain models (Site, Patient, Visit, Deviation, CAPAReport)
+│   │   │   ├── schemas/  # Pydantic validation schemas
+│   │   │   ├── seed/     # Synthetic clinical trial data generator
+│   │   │   └── services/ # Engine services (risk_scoring, deviation_detector, capa, copilot)
+│   │   └── requirements.txt
+│   └── frontend/         # React + Vite + Tailwind CSS dashboard UI
+│       ├── src/
+│       │   ├── components/ # Dashboard, Sites, Deviations, CAPA, Copilot drawer
+│       │   ├── api.ts      # Backend REST client
+│       │   └── App.tsx
+│       └── package.json
+├── docs/                 # Hackathon documentation
 │   ├── problem-statement.md
 │   ├── solution-overview.md
 │   ├── architecture.md
 │   └── setup-guide.md
 ├── demo/                 # Demo artifacts
-│   ├── screenshots/      # App screenshots
-│   └── demo-video-link.txt  # Link to demo video
-├── presentation/         # Slide deck
-└── submission.yaml       # Structured submission metadata
+│   ├── screenshots/
+│   └── demo-video-link.txt
+├── presentation/         # Hackathon slide deck
+└── submission.yaml       # Submission metadata
 ```
 
 ---
 
 ## ⚡ How to Run
 
-> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
+### 1. Prerequisites
+- Python 3.10+
+- Node.js v18+ & npm
 
+### 2. Backend Setup & Startup
 ```bash
-# 1. Clone the repo
-git clone https://github.com/[your-repo].git
-cd [your-repo]
+# Navigate to backend directory
+cd src/backend
 
-# 2. Install dependencies
-[your install command here]
+# Install dependencies
+python -m pip install -r requirements.txt
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env with your values
-
-# 4. Run the project
-[your run command here]
+# Launch FastAPI server (seeds DB automatically on startup)
+python -m uvicorn app.main:app --reload --port 8000
 ```
+*Backend API will be live at `http://localhost:8000` with Swagger docs at `http://localhost:8000/docs`.*
+
+### 3. Frontend Setup & Startup
+```bash
+# Navigate to frontend directory in a new terminal
+cd src/frontend
+
+# Install dependencies
+npm install
+
+# Start Vite dev server
+npm run dev
+```
+*Frontend application will be live at `http://localhost:5173`.*
 
 ---
 
-## 🖥️ Demo
+## 🖥️ Demo Walkthrough (3–5 Minutes)
 
-| Artifact | Link |
-|---|---|
-| 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
-| 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
-| 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
-| 📊 Presentation | [See presentation/slides.pdf](presentation/) |
+1. **Dashboard Overview**: Open `http://localhost:5173`. View overall trial health metrics and notice the red **Critical Risk Alert for Site C (Crestview Research)**.
+2. **Site Risk Scoreboard**: Navigate to **Sites & Risk**. Inspect Site C with risk score **87/100 (CRITICAL)**. Click **Inspect Site C** to view its 8 major deviations and contributing risk factors.
+3. **Deviation Protocol Matrix**: Go to **Deviation Log**. Select a major deviation (e.g. Prohibited Medication or Incorrect Dose) to view expected protocol requirements vs. actual clinical observations.
+4. **IBM Bob AI Copilot**: Click **IBM Bob Copilot** in the top right. Click the quick prompt *"Why is Site C high risk?"*. Observe data-grounded telemetry explanations.
+5. **CAPA Report Generation & PDF Export**: Go to **CAPA Reports**. Select Site C, review the generated Corrective & Preventive Action plan, make inline edits, and click **Download PDF**.
 
 ---
 
 ## ⚠️ Known Limitations
 
-> Be honest — judges appreciate transparency over overclaiming.
-
-- [Limitation 1: e.g., "Authentication is mocked — not production-ready"]
-- [Limitation 2: e.g., "Only tested on Chrome"]
-- [Limitation 3: e.g., "Feature X is scaffolded but not fully implemented"]
+- **Prototype Rules**: Severity classification rules and risk scoring thresholds are prototype/demo logic and do not constitute official clinical or regulatory determinations.
+- **Synthetic Data**: Uses synthetic patient data for safety compliance (no real PHI/PII).
+- **AI Fallback**: Integrates with IBM watsonx.ai REST API when credentials are provided; defaults to a deterministic database-grounded fallback mode when offline.
 
 ---
 
 ## 🏅 What We're Most Proud Of
 
-[Tell the judges what part of your submission is strongest and worth paying close attention to.]
-
----
+The end-to-end cohesion of the system: transforming raw synthetic patient visit data into explainable 0–100 risk scores, data-grounded AI Copilot answers, and instant CAPA PDF reports in a single workflow.

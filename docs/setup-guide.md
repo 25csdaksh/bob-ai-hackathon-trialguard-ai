@@ -1,79 +1,84 @@
-# Setup Guide
-
-> **This file is read by the automated evaluation pipeline. Be precise and complete.**
+# ⚡ Setup & Run Guide — TrialGuard AI
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before starting, verify you have installed:
+- **Python**: 3.10 or higher
+- **Node.js**: v18.0 or higher
+- **npm**: v9.0 or higher
 
-- [ ] [e.g., Python 3.11+]
-- [ ] [e.g., Node.js 18+]
-- [ ] [e.g., Docker Desktop]
-- [ ] [e.g., An IBM Cloud account with watsonx.ai access]
+---
 
-## Environment Variables
-
-Copy `.env.example` to `.env` and fill in the values:
+## 1. Clone & Environment Setup
 
 ```bash
-cp .env.example .env
+# Clone the repository
+git clone https://github.com/25csdaksh/bob-ai-hackathon-trialguard-ai.git
+cd bob-ai-hackathon-trialguard-ai
 ```
 
-| Variable | Description | Required |
-|---|---|---|
-| `WATSONX_API_KEY` | Your IBM watsonx.ai API key | Yes |
-| `WATSONX_PROJECT_ID` | Your watsonx.ai project ID | Yes |
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `SLACK_WEBHOOK_URL` | Slack webhook for alerts | No |
+---
 
-## Installation
+## 2. Backend Setup (FastAPI)
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/[your-org]/[your-repo].git
-cd [your-repo]
+# Navigate to backend folder
+cd src/backend
 
-# 2. Install backend dependencies
-[your command — e.g.: pip install -r requirements.txt]
+# Install Python requirements
+python -m pip install -r requirements.txt
 
-# 3. Install frontend dependencies (if applicable)
-[your command — e.g.: cd frontend && npm install]
-
-# 4. Set up the database (if applicable)
-[your command — e.g.: python manage.py migrate]
+# Launch FastAPI server (seeds database automatically on startup)
+python -m uvicorn app.main:app --reload --port 8000
 ```
 
-## Running the Application
+The backend server will start on `http://localhost:8000`.  
+You can view interactive OpenAPI swagger docs at `http://localhost:8000/docs`.
+
+---
+
+## 3. Frontend Setup (React + Vite)
+
+Open a new terminal window:
 
 ```bash
-# Start the backend
-[your command — e.g.: uvicorn app.main:app --reload]
+# Navigate to frontend folder
+cd src/frontend
 
-# Start the frontend (in a separate terminal, if applicable)
-[your command — e.g.: cd frontend && npm run dev]
+# Install dependencies
+npm install
+
+# Launch Vite dev server
+npm run dev
 ```
 
-The application will be available at: `http://localhost:[PORT]`
+The frontend application will launch at `http://localhost:5173`.
 
-## Running Tests
+---
+
+## 4. Optional Environment Variables (.env)
+
+If using IBM watsonx.ai REST integration, create a `.env` file inside `src/backend/`:
+
+```env
+WATSONX_API_KEY=your_ibm_watsonx_api_key
+WATSONX_URL=https://us-south.ml.cloud.ibm.com
+WATSONX_PROJECT_ID=your_project_id
+DATABASE_URL=sqlite:///./trialguard.db
+```
+
+*Note: If credentials are not present, TrialGuard AI operates seamlessly in a deterministic data-grounded fallback mode.*
+
+---
+
+## 5. Verification Commands
+
+To verify the submission files locally:
 
 ```bash
-[your test command — e.g.: pytest tests/ -v]
+# Test backend module import
+python -c "from src.backend.app.main import app; print('Backend compiles!')"
+
+# Test frontend production build
+cd src/frontend && npm run build
 ```
-
-## Quick Demo (Optional)
-
-If you have a demo script or sample data to showcase the project quickly:
-
-```bash
-[e.g.: python demo/seed_demo_data.py]
-[e.g.: open http://localhost:8000/demo]
-```
-
-## Troubleshooting
-
-| Issue | Solution |
-|---|---|
-| [e.g., `ModuleNotFoundError`] | [e.g., Run `pip install -r requirements.txt` again] |
-| [e.g., Database connection refused] | [e.g., Ensure PostgreSQL is running: `docker compose up db`] |
-| [e.g., watsonx.ai 401 error] | [e.g., Check `WATSONX_API_KEY` in your `.env` file] |

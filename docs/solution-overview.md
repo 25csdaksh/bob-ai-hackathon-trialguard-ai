@@ -1,41 +1,53 @@
-# Solution Overview
+# 💡 Solution Overview — TrialGuard AI
 
-## What We Built
+## Solution Architecture & Workflow
 
-[Describe your solution in plain language. Avoid jargon — write as if explaining to a smart colleague unfamiliar with your tech stack.]
-
-## How It Works
-
-[Explain the core mechanism step by step. A numbered list or simple flow works well here.]
-
-1. [Step 1: e.g., "User connects their GitHub repository via OAuth"]
-2. [Step 2: e.g., "The system ingests pipeline logs and feeds them to watsonx.ai"]
-3. [Step 3: e.g., "An anomaly score is computed and displayed on the dashboard"]
-4. [Step 4: e.g., "Alerts are sent to Slack when the score exceeds a threshold"]
-
-## Architecture Diagram
-
-> See [`architecture.md`](architecture.md) for the detailed diagram.
-
-[Optionally include a simple ASCII or Mermaid diagram here for quick reference.]
+TrialGuard AI transforms clinical trial protocol monitoring into an automated, transparent, end-to-end decision-support system.
 
 ```
-[User] → [Frontend: React] → [API: FastAPI] → [watsonx.ai] → [Dashboard]
-                                    ↓
-                             [PostgreSQL DB]
+Clinical Trial Protocol + Synthetic Telemetry Data
+                       ↓
+            Protocol Rule Engine
+                       ↓
+          Protocol Deviation Detector
+                       ↓
+           Severity Classification (Major / Minor / Admin)
+                       ↓
+             0–100 Site Risk Intelligence Engine
+                       ↓
+             Explainable Risk Drivers
+                       ↓
+             CAPA Report Generator (PDF Export)
+                       ↓
+            IBM Bob AI Copilot (watsonx.ai Grounded)
 ```
 
-## Key Design Decisions
+## Key Modules & Innovations
 
-| Decision | Rationale |
-|---|---|
-| [e.g., Used watsonx.ai for anomaly detection] | [e.g., Pre-trained models reduced time-to-value vs. building from scratch] |
-| [Decision 2] | [Rationale 2] |
-| [Decision 3] | [Rationale 3] |
+### 1. Automated Protocol Rule Engine
+Scans incoming visit telemetry against protocol parameters:
+- **Expected Visit Window Validation**: Detects missed or out-of-window visits.
+- **Dosage Verification**: Flags discrepancies between expected vs actual dosage.
+- **Medication Screening**: Checks concomitant medications against prohibited lists.
+- **Laboratory Panel Audit**: Verifies mandatory lab test completion status.
 
-## IBM Technologies Used
+### 2. Prototype Severity Classification
+Classifies deviations into three actionable tiers:
+- **Major**: Critical threats to patient safety or primary endpoint data integrity (e.g. prohibited medication, double dosing, missed safety visit).
+- **Minor**: Non-critical procedural delays (e.g. late visit within reasonable threshold, missing non-critical lab).
+- **Administrative**: Minor documentation or formatting oversights.
 
-[Explain specifically HOW you used each IBM technology — not just that you used it.]
+### 3. Explainable Site Risk Intelligence Score (0–100)
+Calculates a site risk score based on weighted deviation metrics, major incident frequency, and recent compliance trends. Risk levels are categorized into:
+- `Low` (0–30)
+- `Medium` (31–60)
+- `High` (61–80)
+- `Critical` (81–100)
 
-- **[IBM Tech 1, e.g., watsonx.ai]:** [How it was used — e.g., "Used the `ibm/granite-13b-instruct-v2` model via the Python SDK to classify anomaly types from log text."]
-- **[IBM Tech 2]:** [How it was used]
+Every risk score is accompanied by human-understandable contributing risk drivers.
+
+### 4. CAPA-Ready Report Generator
+Drafts structured Corrective & Preventive Action plans including Issue Summary, Root Cause Analysis, Immediate Corrective Actions, Preventive Actions, Priority, and Responsible Roles, downloadable directly as clean PDF documents.
+
+### 5. IBM Bob AI Copilot
+Provides an interactive natural language assistant grounded in the live trial database to answer complex questions ("Why is Site C high risk?", "Show me all major deviations") with verifiable telemetry references.

@@ -1,21 +1,22 @@
-# Problem Statement
+# 🎯 Problem Statement — Clinical Trial Protocol Deviation & Risk Monitoring
 
 ## Background
+Clinical trials are complex multi-center medical research studies involving dozens of trial sites and thousands of enrolled human subjects. Strict adherence to trial protocols (the master scientific plan) is essential to protect patient safety, ensure trial data validity, and satisfy regulatory standards (e.g., FDA, EMA, ICH-GCP).
 
-[Describe the broader context. What domain or industry does this problem belong to? What situation creates the problem?]
+## The Challenge
+Despite rigorous protocols, **protocol deviations** occur frequently during trial execution:
+1. **Missed Safety Visits**: Patients miss required follow-up checkups.
+2. **Late Visit Windows**: Visits occur outside approved protocol timelines.
+3. **Incorrect Dosing**: Investigational drug dosages administered incorrectly.
+4. **Prohibited Concomitant Medications**: Patients take unapproved medications that interact with study drugs.
+5. **Omitted Laboratory Tests**: Mandatory blood/urine safety panels are missed.
+6. **Protocol Rule Violations**: Out-of-order procedures or non-compliance with inclusion criteria.
 
-## The Problem
+## Current Pain Points
+- **Delayed Risk Discovery**: Protocol violations often go undetected for weeks or months until routine monitoring visits or post-study audits.
+- **Patient Safety Hazards**: Unmonitored dosing errors or prohibited drug interactions expose trial subjects to avoidable medical risks.
+- **Costly Trial Delays**: Late discovery of systemic site non-compliance can lead to invalidation of trial data, regulatory rejection, or trial halts costing millions of dollars.
+- **Manual Auditing Overload**: Clinical Research Associates (CRAs) manually review thousands of paper or EHR records without automated risk scoring.
 
-[State the problem clearly and specifically. Avoid vague statements like "things are slow" — instead say "Operations teams spend an average of 45 minutes per incident diagnosing pipeline failures because logs are scattered across 6 different tools."]
-
-## Who is Affected
-
-[Describe the specific user or persona experiencing this problem. Be concrete — not "developers" but "backend engineers managing CI/CD pipelines in enterprises with 50+ microservices."]
-
-## Why It Matters
-
-[What is the cost of this problem? Lost time? Revenue? Safety risk? Frustration? Quantify if possible.]
-
-## Why Existing Solutions Fall Short
-
-[Briefly explain what people currently do and why it doesn't fully solve the problem. This sets up why your solution is needed.]
+## Solution Imperative
+Trial sponsors and site monitors require an automated, real-time risk intelligence system that ingests patient visit telemetry, detects protocol deviations immediately, classifies severity, calculates site risk scores with transparent explanations, generates CAPA-ready corrective reports, and provides natural language AI decision support.

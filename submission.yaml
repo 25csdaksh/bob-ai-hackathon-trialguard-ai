@@ -1,69 +1,50 @@
 # =============================================================================
 # HACKATHON SUBMISSION METADATA
 # =============================================================================
-# Instructions:
-#   - Fill in ALL required fields (marked with # REQUIRED)
-#   - Optional fields can be left as empty strings ""
-#   - Do NOT rename this file — the evaluation pipeline reads it by name
-#   - Use double quotes around all string values
-# =============================================================================
-
 team:
-  name: ""                             # REQUIRED — e.g., "Orion Squad"
-  track: ""                            # REQUIRED — one of: AI | DevOps | Sustainability | Open
+  name: "TrialGuard Squad"
+  track: "AI"
   lead:
-    name: ""                           # REQUIRED — e.g., "Alice Chen"
-    email: ""                          # REQUIRED — e.g., "alice.chen@ibm.com"
+    name: "Daksh Soni"
+    email: "25cs102@charusat.edu.in"
   members:
-    - name: ""                         # REQUIRED — Team member 1
-      email: ""
-    - name: ""                         # Add more members by copying the two lines above
-      email: ""
-    - name: ""
-      email: ""
+    - name: "Daksh Soni"
+      email: "25cs102@charusat.edu.in"
 
 submission:
-  title: ""                            # REQUIRED — Project display name, e.g., "SmartOps Dashboard"
+  title: "TrialGuard AI — Clinical Trial Risk Monitor & Protocol Deviation Detector"
 
-  problem_statement: >                 # REQUIRED — 1-3 sentences. What problem? Who has it?
-    Replace this text with a concise description of the real-world problem
-    your project addresses and who experiences it.
+  problem_statement: >
+    Clinical trial sponsors and site monitors face critical risks when protocol deviations—such as missed visits, incorrect drug dosing, prohibited medication usage, and omitted safety lab draws—go undetected for weeks. Manual auditing leads to regulatory non-compliance, patient safety hazards, costly trial delays, and compromised trial data integrity.
 
-  solution_summary: >                  # REQUIRED — 1-3 sentences. What did you build?
-    Replace this text with a clear description of your solution
-    and how it addresses the problem above.
+  solution_summary: >
+    TrialGuard AI is an automated clinical trial risk monitor and decision-support system. It automatically ingests synthetic patient visit data, runs a protocol rule engine to detect and classify deviations by severity, calculates a 0–100 site risk intelligence score with explainable contributing drivers, drafts editable CAPA-ready reports, and provides an interactive IBM Bob AI Copilot.
 
-  key_features:                        # REQUIRED — List 3 to 5 specific features you implemented
-    - ""                               # e.g., "Real-time pipeline anomaly detection using watsonx.ai"
-    - ""
-    - ""
-    - ""                               # optional 4th
-    - ""                               # optional 5th
+  key_features:
+    - "Automated Protocol Rule Engine detecting missed visits, late visits, incorrect dosing, prohibited medications, and omitted lab tests"
+    - "Prototype Severity Classification labeling protocol deviations into Major, Minor, and Administrative categories"
+    - "Explainable Site Risk Scoring algorithm computing 0–100 risk scores, risk levels (Low to Critical), and top contributing risk drivers"
+    - "Interactive IBM Bob AI Copilot grounded in clinical trial database telemetry, with watsonx.ai REST integration and deterministic fallback"
+    - "CAPA Report Generator creating structured, editable Corrective & Preventive Action plans with client-side PDF export"
 
   tech_stack:
-    languages: []                      # REQUIRED — e.g., ["Python", "TypeScript"]
-    frameworks: []                     # e.g., ["FastAPI", "React"]
-    ibm_technologies: []               # e.g., ["watsonx.ai", "IBM Bob", "IBM Cloud Functions"]
-    databases: []                      # e.g., ["PostgreSQL", "Redis"]
-    other: []                          # e.g., ["Docker", "GitHub Actions", "Slack API"]
+    languages: ["Python", "TypeScript", "SQL", "HTML/CSS"]
+    frameworks: ["FastAPI", "React", "Vite", "Tailwind CSS", "SQLAlchemy", "Pydantic"]
+    ibm_technologies: ["watsonx.ai", "IBM Bob AI Copilot"]
+    databases: ["SQLite"]
+    other: ["Recharts", "jsPDF", "GitHub Actions"]
 
-  what_we_are_most_proud_of: >         # Optional but recommended — guides judges to your best work
-    Replace with what aspect of the submission you consider strongest
-    and want judges to pay special attention to.
+  what_we_are_most_proud_of: >
+    The seamless end-to-end integration from raw patient visit telemetry to explainable site risk scoring, data-grounded AI Copilot answers, and instant CAPA PDF report generation.
 
-  known_limitations: >                 # Optional but recommended — be honest about gaps
-    Replace with any known limitations, incomplete features,
-    or shortcuts taken due to time constraints.
+  known_limitations: >
+    This is a prototype decision-support tool utilizing synthetic clinical trial data. Severity classification rules and risk scoring thresholds are prototype/demo metrics and do not constitute official regulatory determinations.
 
-# =============================================================================
-# ARTIFACT LOCATIONS
-# These paths are relative to the repo root. Only change if you moved files.
-# =============================================================================
 artifacts:
   source_code: "src/"
   setup_guide: "docs/setup-guide.md"
   architecture_doc: "docs/architecture.md"
-  demo_video: "demo/demo-video-link.txt"   # URL to hosted video (YouTube, Loom, Box)
-  live_demo: "demo/live-demo-url.txt"      # URL to deployed demo (optional)
+  demo_video: "demo/demo-video-link.txt"
+  live_demo: "demo/live-demo-url.txt"
   screenshots: "demo/screenshots/"
   presentation: "presentation/"
