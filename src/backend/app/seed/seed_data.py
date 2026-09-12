@@ -117,7 +117,7 @@ def seed_database(db: Session):
                 notes = "Routine visit completed according to clinical protocol guidelines."
 
                 # Introduce intentional deviations based on site risk profiles
-                # Site C (SITE-003) is HIGH RISK (many major/minor deviations)
+                # Site C (SITE-003) is CRITICAL RISK (many major/minor deviations)
                 # Site B & E have moderate deviations
                 # Site A & D have minimal/no deviations
 
@@ -129,7 +129,7 @@ def seed_database(db: Session):
                 dev_expl = ""
                 dev_rec = ""
 
-                if site_id == "SITE-003":  # High risk site
+                if site_id == "SITE-003":  # Critical risk site
                     rand_val = random.random()
                     if v_idx == 4 and rand_val < 0.6:  # Missed visit
                         v_status = "Missed"

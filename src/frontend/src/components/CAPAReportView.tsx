@@ -124,7 +124,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
             onChange={(e) => setTargetSite(e.target.value)}
             className="px-3 py-2 bg-dark-800 border border-slate-700 rounded-xl text-xs text-white"
           >
-            <option value="SITE-003">SITE-003 (Crestview - High Risk)</option>
+            <option value="SITE-003">SITE-003 (Crestview - Critical Risk)</option>
             <option value="SITE-002">SITE-002 (Beacon)</option>
             <option value="SITE-001">SITE-001 (Apex)</option>
             <option value="SITE-004">SITE-004 (Delta)</option>
