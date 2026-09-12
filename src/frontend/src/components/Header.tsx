@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
             <input
               type="text"
               placeholder="Search sites, patients, deviations..."
-              className="w-full pl-9 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+              className="w-full pl-9 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600 focus:bg-white transition-all"
             />
           </div>
 
@@ -61,13 +61,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
             {/* Notification Bell */}
             <button className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors relative">
               <Bell className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-blue-600 rounded-full ring-2 ring-white"></span>
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-bottle-600 rounded-full ring-2 ring-white"></span>
             </button>
 
             {/* IBM Bob Copilot Button */}
             <button
               onClick={toggleCopilot}
-              className="flex items-center space-x-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow-sm transition-all active:scale-95"
+              className="flex items-center space-x-2 px-3.5 py-1.5 bg-bottle-900 hover:bg-bottle-950 text-white text-xs font-semibold rounded-xl shadow-sm transition-all active:scale-95"
             >
               <Bot className="h-4 w-4" />
               <span className="hidden sm:inline">IBM Bob Copilot</span>
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, toggleC
 
             {/* User Profile */}
             <div className="pl-2 border-l border-slate-200 flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-xl bg-blue-100 border border-blue-200 flex items-center justify-center text-blue-700 font-bold text-xs">
+              <div className="h-8 w-8 rounded-xl bg-bottle-100 border border-bottle-200 flex items-center justify-center text-bottle-900 font-bold text-xs">
                 SJ
               </div>
               <div className="hidden lg:block text-left">

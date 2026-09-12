@@ -37,13 +37,13 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
         {/* Modal Header */}
         <div className="p-6 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-blue-50 rounded-2xl border border-blue-200 text-blue-600">
+            <div className="p-2.5 bg-bottle-50 rounded-2xl border border-bottle-200 text-bottle-800">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
                 <h2 className="text-xl font-bold text-slate-900">{data?.site?.site_name || siteId}</h2>
-                <span className="font-mono text-xs px-2.5 py-0.5 bg-blue-100 text-blue-800 rounded-full font-bold border border-blue-200">
+                <span className="font-mono text-xs px-2.5 py-0.5 bg-bottle-100 text-bottle-900 rounded-full font-bold border border-bottle-200">
                   {siteId}
                 </span>
               </div>
@@ -63,7 +63,7 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           {loading ? (
             <div className="flex justify-center items-center h-48">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-bottle-800"></div>
             </div>
           ) : data ? (
             <>
@@ -126,13 +126,13 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
                     <div
                       key={dev.deviation_id}
                       onClick={() => onSelectDeviation(dev)}
-                      className="p-3.5 rounded-xl bg-slate-50 hover:bg-blue-50/50 border border-slate-200 hover:border-blue-300 cursor-pointer transition-all flex items-center justify-between"
+                      className="p-3.5 rounded-xl bg-slate-50 hover:bg-bottle-50/50 border border-slate-200 hover:border-bottle-300 cursor-pointer transition-all flex items-center justify-between"
                     >
                       <div className="flex items-center space-x-3">
                         <span className={`px-2.5 py-0.5 text-xs font-bold rounded-full ${
                           dev.severity === 'Major' ? 'bg-rose-100 text-rose-800 border border-rose-200' :
                           dev.severity === 'Minor' ? 'bg-amber-100 text-amber-800 border border-amber-200' :
-                          'bg-blue-100 text-blue-800 border border-blue-200'
+                          'bg-bottle-100 text-bottle-900 border border-bottle-200'
                         }`}>
                           {dev.severity}
                         </span>
@@ -141,15 +141,15 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
                           <p className="text-xs text-slate-500">Patient {dev.patient_id} • {dev.date}</p>
                         </div>
                       </div>
-                      <ArrowUpRight className="h-4 w-4 text-slate-400 hover:text-blue-600" />
+                      <ArrowUpRight className="h-4 w-4 text-slate-400 hover:text-bottle-800" />
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Recommended Mitigations */}
-              <div className="p-5 rounded-2xl bg-blue-50 border border-blue-200 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900">Recommended Quality Assurance Mitigations</h4>
+              <div className="p-5 rounded-2xl bg-bottle-50 border border-bottle-200 space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-bottle-950">Recommended Quality Assurance Mitigations</h4>
                 <ul className="space-y-2 text-xs text-slate-800">
                   {data.recommended_mitigations.map((mit: string, idx: number) => (
                     <li key={idx} className="flex items-center space-x-2">
@@ -169,7 +169,7 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
             onClick={() => openCopilotPrompt(`Why is ${siteId} high risk?`)}
             className="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl border border-slate-300 transition-colors flex items-center space-x-1.5"
           >
-            <Bot className="h-4 w-4 text-blue-600" />
+            <Bot className="h-4 w-4 text-bottle-800" />
             <span>Ask Copilot About {siteId}</span>
           </button>
 
@@ -178,7 +178,7 @@ export const SiteDetailModal: React.FC<SiteDetailModalProps> = ({
               onClose();
               onGenerateCAPA(siteId);
             }}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1.5"
+            className="px-4 py-2 bg-bottle-900 hover:bg-bottle-950 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1.5"
           >
             <FileText className="h-4 w-4" />
             <span>Generate CAPA Report</span>

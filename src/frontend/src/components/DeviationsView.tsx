@@ -31,7 +31,7 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
       case 'Minor':
         return <span className="px-2.5 py-0.5 bg-amber-50 border border-amber-200 text-amber-700 font-bold text-xs rounded-full">Minor</span>;
       default:
-        return <span className="px-2.5 py-0.5 bg-blue-50 border border-blue-200 text-blue-700 font-bold text-xs rounded-full">Administrative</span>;
+        return <span className="px-2.5 py-0.5 bg-bottle-50 border border-bottle-200 text-bottle-800 font-bold text-xs rounded-full">Administrative</span>;
     }
   };
 
@@ -56,7 +56,7 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
               placeholder="Search patient, site, ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600"
             />
           </div>
 
@@ -64,7 +64,7 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-bottle-600"
           >
             <option value="ALL">All Severities</option>
             <option value="MAJOR">Major</option>
@@ -76,7 +76,7 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
           <select
             value={siteFilter}
             onChange={(e) => setSiteFilter(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-bottle-600"
           >
             <option value="ALL">All Sites</option>
             <option value="SITE-001">SITE-001 (Apex)</option>
@@ -117,14 +117,14 @@ export const DeviationsView: React.FC<DeviationsViewProps> = ({ deviations, onSe
                     onClick={() => onSelectDeviation(dev)}
                     className="hover:bg-slate-50 cursor-pointer transition-colors group"
                   >
-                    <td className="p-4 font-mono font-bold text-blue-600">{dev.deviation_id}</td>
+                    <td className="p-4 font-mono font-bold text-bottle-800">{dev.deviation_id}</td>
                     <td className="p-4 font-medium text-slate-900">{dev.patient_id}</td>
                     <td className="p-4 text-slate-700">{dev.site_id}</td>
                     <td className="p-4 font-medium text-slate-900">{dev.deviation_type}</td>
                     <td className="p-4">{getSeverityBadge(dev.severity)}</td>
                     <td className="p-4 text-slate-500">{dev.date}</td>
                     <td className="p-4 text-right">
-                      <button className="px-3 py-1 bg-slate-100 group-hover:bg-blue-600 text-slate-700 group-hover:text-white rounded-lg text-xs font-semibold transition-colors inline-flex items-center space-x-1">
+                      <button className="px-3 py-1 bg-slate-100 group-hover:bg-bottle-900 text-slate-700 group-hover:text-white rounded-lg text-xs font-semibold transition-colors inline-flex items-center space-x-1">
                         <span>Inspect</span>
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </button>

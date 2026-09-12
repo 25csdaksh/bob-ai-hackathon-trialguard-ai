@@ -63,18 +63,18 @@ export function App() {
   ];
 
   return (
-    <div className="min-h-screen flex bg-slate-50 text-slate-900 font-sans antialiased">
+    <div className="min-h-screen flex bg-satin-50 text-slate-900 font-sans antialiased">
       {/* LEFT SIDEBAR NAVIGATION */}
       <aside className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 hidden md:flex">
         {/* Sidebar Header / Branding */}
         <div className="p-5 border-b border-slate-100 flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-          <div className="p-2.5 bg-blue-600 rounded-xl shadow-sm text-white">
+          <div className="p-2.5 bg-bottle-900 rounded-xl shadow-xs text-white">
             <ShieldAlert className="h-5 w-5" />
           </div>
           <div>
             <div className="flex items-center space-x-1.5">
               <span className="font-extrabold text-base tracking-tight text-slate-900">TrialGuard</span>
-              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 rounded-md">
+              <span className="px-1.5 py-0.5 text-[10px] font-bold bg-bottle-50 text-bottle-800 border border-bottle-200 rounded-md">
                 AI
               </span>
             </div>
@@ -94,17 +94,17 @@ export function App() {
                 onClick={() => setActiveTab(item.id)}
                 className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                   isActive
-                    ? 'bg-blue-50 text-blue-700 border border-blue-200/80 shadow-xs'
+                    ? 'bg-bottle-50 text-bottle-900 border border-bottle-200/80 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-transparent'
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <Icon className={`h-4 w-4 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
+                  <Icon className={`h-4 w-4 ${isActive ? 'text-bottle-800' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
                 {item.count !== undefined && (
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                    isActive ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-600'
+                    isActive ? 'bg-bottle-100 text-bottle-900' : 'bg-slate-100 text-slate-600'
                   }`}>
                     {item.count}
                   </span>
@@ -115,9 +115,9 @@ export function App() {
         </div>
 
         {/* Sidebar Banner / Promotion */}
-        <div className="p-3 mx-3 mb-4 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl">
-          <div className="flex items-center space-x-2 text-blue-700 font-bold text-xs">
-            <Sparkles className="h-4 w-4 text-blue-600" />
+        <div className="p-3 mx-3 mb-4 bg-gradient-to-br from-bottle-50 to-emerald-50 border border-bottle-100 rounded-2xl">
+          <div className="flex items-center space-x-2 text-bottle-900 font-bold text-xs">
+            <Sparkles className="h-4 w-4 text-bottle-700" />
             <span>IBM Bob Copilot</span>
           </div>
           <p className="text-[11px] text-slate-600 mt-1 leading-snug">
@@ -125,7 +125,7 @@ export function App() {
           </p>
           <button
             onClick={() => setIsCopilotOpen(true)}
-            className="mt-2.5 w-full py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-1"
+            className="mt-2.5 w-full py-1.5 bg-bottle-900 hover:bg-bottle-800 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-1"
           >
             <span>Open Assistant</span>
             <ChevronRight className="h-3 w-3" />
@@ -155,7 +155,7 @@ export function App() {
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap ${
-                activeTab === item.id ? 'bg-blue-600 text-white' : 'text-slate-600 bg-slate-100'
+                activeTab === item.id ? 'bg-bottle-900 text-white' : 'text-slate-600 bg-slate-100'
               }`}
             >
               {item.label}

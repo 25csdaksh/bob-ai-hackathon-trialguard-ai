@@ -83,14 +83,14 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
       {/* Drawer Header */}
       <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-blue-600 rounded-xl shadow-xs text-white">
+          <div className="p-2 bg-bottle-900 rounded-xl shadow-xs text-white">
             <Bot className="h-5 w-5" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
               <h3 className="font-bold text-slate-900 text-sm">IBM Bob AI Copilot</h3>
-              <span className="px-2 py-0.5 text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200 rounded-full flex items-center">
-                <Sparkles className="h-3 w-3 mr-1 text-blue-600" />
+              <span className="px-2 py-0.5 text-[10px] font-bold bg-bottle-100 text-bottle-900 border border-bottle-200 rounded-full flex items-center">
+                <Sparkles className="h-3 w-3 mr-1 text-bottle-800" />
                 Data-Grounded
               </span>
             </div>
@@ -113,7 +113,7 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
             <div
               className={`max-w-[90%] p-3.5 rounded-2xl shadow-xs ${
                 msg.sender === 'user'
-                  ? 'bg-blue-600 text-white rounded-br-none font-medium'
+                  ? 'bg-bottle-900 text-white rounded-br-none font-medium'
                   : 'bg-slate-100 text-slate-900 border border-slate-200 rounded-bl-none'
               }`}
             >
@@ -128,7 +128,7 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
 
               {/* Data Context Badge */}
               {msg.data_context && (
-                <div className="mt-3 pt-2 border-t border-slate-200/80 flex items-center space-x-1 text-[10px] text-blue-700 font-mono">
+                <div className="mt-3 pt-2 border-t border-slate-200/80 flex items-center space-x-1 text-[10px] text-bottle-800 font-mono">
                   <CheckCircle2 className="h-3 w-3 text-emerald-600" />
                   <span>Telemetry Verified: {JSON.stringify(msg.data_context)}</span>
                 </div>
@@ -147,10 +147,10 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
                       }
                       handleSendPrompt(act);
                     }}
-                    className="px-3 py-1 bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 rounded-full text-[11px] font-medium transition-colors shadow-xs flex items-center space-x-1"
+                    className="px-3 py-1 bg-white hover:bg-bottle-50 text-slate-700 hover:text-bottle-900 border border-slate-200 hover:border-bottle-300 rounded-full text-[11px] font-medium transition-colors shadow-xs flex items-center space-x-1"
                   >
                     <span>{act}</span>
-                    <ArrowRight className="h-3 w-3 text-blue-600" />
+                    <ArrowRight className="h-3 w-3 text-bottle-800" />
                   </button>
                 ))}
               </div>
@@ -160,7 +160,7 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
 
         {loading && (
           <div className="flex items-center space-x-2 text-slate-500 p-3 bg-slate-50 border border-slate-200 rounded-xl max-w-[70%]">
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-bottle-800"></div>
             <span className="text-xs">Analyzing trial telemetry...</span>
           </div>
         )}
@@ -181,12 +181,12 @@ export const AICopilotDrawer: React.FC<AICopilotDrawerProps> = ({
             placeholder="Ask AI Copilot about trial risk..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 px-4 py-2 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xs"
+            className="flex-1 px-4 py-2 bg-white border border-slate-300 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600 shadow-xs"
           />
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="p-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-xl shadow-xs transition-colors"
+            className="p-2 bg-bottle-900 hover:bg-bottle-950 disabled:opacity-50 text-white rounded-xl shadow-xs transition-colors"
           >
             <Send className="h-4 w-4" />
           </button>

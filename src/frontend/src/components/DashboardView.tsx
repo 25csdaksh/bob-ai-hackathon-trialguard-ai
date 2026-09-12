@@ -19,12 +19,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   if (!metrics) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-bottle-800"></div>
       </div>
     );
   }
 
-  const COLORS = ['#f43f5e', '#f59e0b', '#2563eb'];
+  const COLORS = ['#f43f5e', '#f59e0b', '#065f46'];
 
   const severityData = [
     { name: 'Major', value: metrics.major_deviations },
@@ -71,10 +71,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* Top 4 KPI Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Sites</span>
-            <div className="p-2 bg-blue-50 rounded-xl text-blue-600 border border-blue-100">
+            <div className="p-2 bg-bottle-50 rounded-xl text-bottle-800 border border-bottle-100">
               <Building2 className="h-4 w-4" />
             </div>
           </div>
@@ -84,10 +84,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Patients</span>
-            <div className="p-2 bg-indigo-50 rounded-xl text-indigo-600 border border-indigo-100">
+            <div className="p-2 bg-bottle-50 rounded-xl text-bottle-800 border border-bottle-100">
               <Users className="h-4 w-4" />
             </div>
           </div>
@@ -97,7 +97,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Visits Evaluated</span>
             <div className="p-2 bg-emerald-50 rounded-xl text-emerald-600 border border-emerald-100">
@@ -110,7 +110,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-blue-300 transition-colors">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-bottle-300 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Protocol Deviations</span>
             <div className="p-2 bg-amber-50 rounded-xl text-amber-600 border border-amber-100">
@@ -168,9 +168,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <p className="text-[11px] font-semibold text-amber-700">Minor</p>
               <p className="text-base font-extrabold text-amber-800">{metrics.minor_deviations}</p>
             </div>
-            <div className="p-2 rounded-xl bg-blue-50 border border-blue-200">
-              <p className="text-[11px] font-semibold text-blue-700">Admin</p>
-              <p className="text-base font-extrabold text-blue-800">{metrics.administrative_deviations}</p>
+            <div className="p-2 rounded-xl bg-bottle-50 border border-bottle-200">
+              <p className="text-[11px] font-semibold text-bottle-800">Admin</p>
+              <p className="text-base font-extrabold text-bottle-900">{metrics.administrative_deviations}</p>
             </div>
           </div>
         </div>
@@ -184,7 +184,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <button
               onClick={() => onNavigateTab('sites')}
-              className="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center space-x-1"
+              className="text-xs text-bottle-800 hover:text-bottle-950 font-semibold flex items-center space-x-1"
             >
               <span>View All Sites</span>
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -243,7 +243,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   </div>
                   <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-blue-600 rounded-full"
+                      className="h-full bg-bottle-800 rounded-full"
                       style={{ width: `${pct}%` }}
                     ></div>
                   </div>
@@ -256,7 +256,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         {/* Actionable Recommendations Card */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="flex items-center space-x-2 text-blue-600 mb-1">
+            <div className="flex items-center space-x-2 text-bottle-800 mb-1">
               <TrendingUp className="h-4 w-4" />
               <h3 className="text-sm font-bold text-slate-900">Recommended Quality Mitigations</h3>
             </div>
@@ -281,7 +281,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
             <button
               onClick={() => onNavigateTab('capa')}
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors text-center"
+              className="w-full py-2.5 bg-bottle-900 hover:bg-bottle-950 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors text-center"
             >
               Generate CAPA Report
             </button>

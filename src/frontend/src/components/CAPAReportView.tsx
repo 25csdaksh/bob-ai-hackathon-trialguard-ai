@@ -64,7 +64,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
     const doc = new jsPDF();
 
     doc.setFontSize(18);
-    doc.setTextColor(30, 58, 138);
+    doc.setTextColor(6, 78, 59);
     doc.text("TrialGuard AI — Corrective and Preventive Action (CAPA) Report", 14, 20);
 
     doc.setFontSize(10);
@@ -112,7 +112,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-bold text-slate-900 flex items-center space-x-2">
-            <FileText className="h-5 w-5 text-blue-600" />
+            <FileText className="h-5 w-5 text-bottle-800" />
             <span>CAPA-Ready Report Management</span>
           </h2>
           <p className="text-xs text-slate-500">Automated Corrective & Preventive Action Formulations</p>
@@ -122,7 +122,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
           <select
             value={targetSite}
             onChange={(e) => setTargetSite(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-bottle-600"
           >
             <option value="SITE-003">SITE-003 (Crestview - Critical Risk)</option>
             <option value="SITE-002">SITE-002 (Beacon)</option>
@@ -133,7 +133,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
 
           <button
             onClick={handleGenerateNew}
-            className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1.5"
+            className="px-3.5 py-1.5 bg-bottle-900 hover:bg-bottle-950 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1.5"
           >
             <Plus className="h-4 w-4" />
             <span>Generate New CAPA</span>
@@ -157,12 +157,12 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                 }}
                 className={`p-3.5 rounded-xl border cursor-pointer transition-colors ${
                   selectedReport?.report_id === rep.report_id
-                    ? 'bg-blue-50 border-blue-300 text-blue-950 shadow-xs'
+                    ? 'bg-bottle-50 border-bottle-300 text-bottle-950 shadow-xs'
                     : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-blue-600">{rep.report_id}</span>
+                  <span className="font-mono text-xs font-bold text-bottle-800">{rep.report_id}</span>
                   <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full ${
                     rep.priority === 'Critical' ? 'bg-rose-100 text-rose-800 border border-rose-200' : 'bg-amber-100 text-amber-800 border border-amber-200'
                   }`}>
@@ -184,7 +184,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
               <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono font-bold text-sm text-blue-600">{selectedReport.report_id}</span>
+                    <span className="font-mono font-bold text-sm text-bottle-800">{selectedReport.report_id}</span>
                     <span className="px-2.5 py-0.5 text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 rounded-full">
                       Priority: {selectedReport.priority}
                     </span>
@@ -213,7 +213,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
 
                   <button
                     onClick={exportPDF}
-                    className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1"
+                    className="px-3.5 py-1.5 bg-bottle-900 hover:bg-bottle-950 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center space-x-1"
                   >
                     <Download className="h-4 w-4" />
                     <span>Export PDF</span>
@@ -236,7 +236,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                     <textarea
                       value={editedReport.issue_summary}
                       onChange={(e) => setEditedReport({ ...editedReport, issue_summary: e.target.value })}
-                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-bottle-600 focus:outline-none"
                       rows={2}
                     />
                   ) : (
@@ -251,7 +251,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                     <textarea
                       value={editedReport.observations}
                       onChange={(e) => setEditedReport({ ...editedReport, observations: e.target.value })}
-                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-bottle-600 focus:outline-none"
                       rows={2}
                     />
                   ) : (
@@ -266,7 +266,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                     <textarea
                       value={editedReport.root_cause}
                       onChange={(e) => setEditedReport({ ...editedReport, root_cause: e.target.value })}
-                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-bottle-600 focus:outline-none"
                       rows={2}
                     />
                   ) : (
@@ -282,7 +282,7 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                       <textarea
                         value={editedReport.corrective_action}
                         onChange={(e) => setEditedReport({ ...editedReport, corrective_action: e.target.value })}
-                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-bottle-600 focus:outline-none"
                         rows={3}
                       />
                     ) : (
@@ -291,16 +291,16 @@ export const CAPAReportView: React.FC<CAPAReportViewProps> = ({ initialSiteId, i
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-blue-700 uppercase tracking-wider">5. Preventive Action</label>
+                    <label className="font-bold text-bottle-800 uppercase tracking-wider">5. Preventive Action</label>
                     {isEditing ? (
                       <textarea
                         value={editedReport.preventive_action}
                         onChange={(e) => setEditedReport({ ...editedReport, preventive_action: e.target.value })}
-                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full p-3 bg-white border border-slate-300 rounded-xl text-slate-900 font-sans text-xs focus:ring-2 focus:ring-bottle-600 focus:outline-none"
                         rows={3}
                       />
                     ) : (
-                      <p className="p-3 bg-blue-50/60 rounded-xl text-blue-950 border border-blue-200">{selectedReport.preventive_action}</p>
+                      <p className="p-3 bg-bottle-50/60 rounded-xl text-bottle-950 border border-bottle-200">{selectedReport.preventive_action}</p>
                     )}
                   </div>
                 </div>

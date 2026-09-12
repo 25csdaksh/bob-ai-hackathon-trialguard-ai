@@ -4,15 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900;
+    @apply bg-[#FAFBF9] text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-950;
   }
 }
 
-/* Light Enterprise Card Styles */
+/* Satin White & Bottle Dark Green Enterprise Card Styles */
 .card-light {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
   border-radius: 1rem;
 }
 
@@ -22,18 +22,18 @@
   border: 1px solid #e2e8f0;
 }
 
-/* Custom scrollbars for Light Theme */
+/* Custom scrollbars for Satin White & Bottle Dark Green Theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f4f6f2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #a7f3d0;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #059669;
 }

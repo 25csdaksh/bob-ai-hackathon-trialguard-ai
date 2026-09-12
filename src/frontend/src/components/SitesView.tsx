@@ -41,7 +41,7 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-bold text-slate-900 flex items-center space-x-2">
-            <Building2 className="h-5 w-5 text-blue-600" />
+            <Building2 className="h-5 w-5 text-bottle-800" />
             <span>Clinical Trial Sites Risk Intelligence</span>
           </h2>
           <p className="text-xs text-slate-500">Monitoring 0–100 calculated risk scores & contributing drivers</p>
@@ -56,7 +56,7 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
               placeholder="Search site, PI, location..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-bottle-600"
             />
           </div>
 
@@ -67,7 +67,7 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
                 key={lvl}
                 onClick={() => setRiskFilter(lvl)}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors ${
-                  riskFilter === lvl ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                  riskFilter === lvl ? 'bg-white text-bottle-800 shadow-xs font-bold' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {lvl}
@@ -88,8 +88,8 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
             <div>
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <span className="text-xs font-mono font-semibold text-blue-600">{site.site_id}</span>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{site.site_name}</h3>
+                  <span className="text-xs font-mono font-semibold text-bottle-800">{site.site_id}</span>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-bottle-800 transition-colors">{site.site_name}</h3>
                   <p className="text-xs text-slate-500">{site.location}</p>
                 </div>
                 {getRiskBadge(site.risk_level, site.risk_score)}
@@ -97,7 +97,7 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
 
               {/* Investigator */}
               <div className="flex items-center space-x-2 text-xs text-slate-700 mb-4 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                <UserCheck className="h-4 w-4 text-blue-600 shrink-0" />
+                <UserCheck className="h-4 w-4 text-bottle-800 shrink-0" />
                 <span className="truncate">PI: <strong className="text-slate-900">{site.principal_investigator}</strong></span>
               </div>
 
@@ -136,7 +136,7 @@ export const SitesView: React.FC<SitesViewProps> = ({ sites, onSelectSite, openC
                 <span>Deviations: <strong className="text-slate-900">{site.total_deviations}</strong></span>
                 <span>Major: <strong className="text-rose-600">{site.major_deviations}</strong></span>
               </div>
-              <span className="text-blue-600 font-semibold flex items-center group-hover:translate-x-1 transition-transform">
+              <span className="text-bottle-800 font-semibold flex items-center group-hover:translate-x-1 transition-transform">
                 Details <ArrowRight className="h-3.5 w-3.5 ml-1" />
               </span>
             </div>
