@@ -8,8 +8,11 @@ team:
     name: "Daksh Soni"
     email: "25cs102@charusat.edu.in"
   members:
-    - name: "Daksh Soni"
+    - name: "Daksh Soni (Team Lead)"
       email: "25cs102@charusat.edu.in"
+    - name: "Visham"
+    - name: "Het"
+    - name: "Manav"
 
 submission:
   title: "TrialGuard AI — Clinical Trial Risk Monitor & Protocol Deviation Detector"

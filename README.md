@@ -11,7 +11,7 @@
 | **Team Name** | TrialGuard Squad |
 | **Track** | AI Track |
 | **Team Lead** | Daksh Soni — `25cs102@charusat.edu.in` |
-| **Members** | Daksh Soni |
+| **Members** | Daksh Soni (Team Lead), Visham, Het, Manav |
 
 ---
 
