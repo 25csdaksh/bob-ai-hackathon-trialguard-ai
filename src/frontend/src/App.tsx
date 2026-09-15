@@ -70,8 +70,8 @@ export function App() {
       <aside className="w-64 bg-[#064E3B] text-white flex flex-col shrink-0 hidden md:flex border-r border-[#047857]/30 shadow-xl">
         {/* Sidebar Header / Branding */}
         <div className="p-5 border-b border-[#047857]/40 flex items-start space-x-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-          <div className="p-2.5 bg-[#022C22] rounded-2xl shadow-inner text-emerald-400 border border-emerald-500/20 shrink-0">
-            <ShieldAlert className="h-6 w-6" />
+          <div className="p-1.5 bg-[#022C22] rounded-2xl shadow-inner border border-emerald-500/30 shrink-0 flex items-center justify-center">
+            <img src="/favicon.svg" alt="TrialGuard AI Logo" className="h-8 w-8" />
           </div>
           <div>
             <div className="flex items-center space-x-1.5">

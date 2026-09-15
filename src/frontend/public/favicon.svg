@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="shieldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022C22" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#022C22" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Base Container -->
+  <rect width="512" height="512" rx="128" fill="url(#shieldBg)" />
+  
+  <!-- Outer Ring -->
+  <rect x="20" y="20" width="472" height="472" rx="108" fill="none" stroke="#10B981" stroke-opacity="0.3" stroke-width="10" />
+
+  <!-- Clinical Shield & Medical Pulse AI Logo -->
+  <g filter="url(#shadow)">
+    <!-- Shield Outline -->
+    <path d="M 256,90 C 330,90 380,110 396,130 C 396,250 366,370 256,422 C 146,370 116,250 116,130 C 132,110 182,90 256,90 Z" fill="#022C22" stroke="url(#iconGrad)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Medical Cross with AI Pulse Center -->
+    <path d="M 256,170 V 322 M 180,246 H 332" fill="none" stroke="url(#accentGrad)" stroke-width="26" stroke-linecap="round"/>
+    
+    <!-- Pulse Line graph overlay -->
+    <path d="M 145,246 L 205,246 L 225,200 L 256,290 L 285,220 L 305,246 L 367,246" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Glowing AI Nodes -->
+    <circle cx="225" cy="200" r="10" fill="#6EE7B7" />
+    <circle cx="256" cy="290" r="10" fill="#6EE7B7" />
+    <circle cx="285" cy="220" r="10" fill="#6EE7B7" />
+  </g>
+</svg>
