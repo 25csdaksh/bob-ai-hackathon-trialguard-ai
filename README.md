@@ -2,10 +2,19 @@
 
 > **IBM Bob AI Innovation Hackathon 2026 Submission (AI Track)**
 >
-> 🚀 **Live Demo**: [https://trialguard-ai.vercel.app/](https://trialguard-ai.vercel.app/)  
-> 🎬 **Demo Video**: [https://youtu.be/FWkEpFx3yz0](https://youtu.be/FWkEpFx3yz0)
+> [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://trialguard-ai.vercel.app/)
+> [![Demo Video](https://img.shields.io/badge/Demo_Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/FWkEpFx3yz0)
+> [![Presentation Slides](https://img.shields.io/badge/Presentation-Slides_PDF-059669?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](presentation/slides.pdf)
 
----
+### 🔗 Quick Links
+
+| Resource | Link | Description |
+|---|---|---|
+| 🚀 **Live Demo** | [https://trialguard-ai.vercel.app/](https://trialguard-ai.vercel.app/) | Deployed Web Application on Vercel |
+| 🎬 **Demo Video** | [https://youtu.be/FWkEpFx3yz0](https://youtu.be/FWkEpFx3yz0) | 4-minute YouTube video walkthrough |
+| 📊 **Slide Deck** | [presentation/slides.pdf](presentation/slides.pdf) | 10-slide Hackathon Pitch Presentation |
+| 📖 **Setup Guide** | [docs/setup-guide.md](docs/setup-guide.md) | Local development & run instructions |
+| 🏗️ **Architecture** | [docs/architecture.md](docs/architecture.md) | System architecture & telemetry flow |
 
 ## 👥 Team
 

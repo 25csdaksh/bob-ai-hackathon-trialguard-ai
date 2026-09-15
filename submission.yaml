@@ -52,4 +52,4 @@ artifacts:
   demo_video: "demo/demo-video-link.txt"
   live_demo: "demo/live-demo-url.txt"
   screenshots: "demo/screenshots/"
-  presentation: "presentation/"
+  presentation: "presentation/slides.pdf"
