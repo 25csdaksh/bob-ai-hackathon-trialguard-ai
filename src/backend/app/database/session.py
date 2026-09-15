@@ -3,7 +3,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DEFAULT_DB = f"sqlite:///{os.path.join(BASE_DIR, 'trialguard.db')}"
+ORIGINAL_DB = os.path.join(BASE_DIR, 'trialguard.db')
+
+if os.environ.get("VERCEL"):
+    import shutil
+    TMP_DB = "/tmp/trialguard.db"
+    if not os.path.exists(TMP_DB) and os.path.exists(ORIGINAL_DB):
+        try:
+            shutil.copyfile(ORIGINAL_DB, TMP_DB)
+        except Exception:
+            pass
+    DEFAULT_DB = f"sqlite:///{TMP_DB}"
+else:
+    DEFAULT_DB = f"sqlite:///{ORIGINAL_DB}"
 
 DB_PATH = os.environ.get("DATABASE_URL", DEFAULT_DB)
 
