@@ -1,6 +1,9 @@
 # 🛡️ TrialGuard AI — Clinical Trial Risk Monitor & Protocol Deviation Detector
 
 > **IBM Bob AI Innovation Hackathon 2026 Submission (AI Track)**
+>
+> 🚀 **Live Demo**: [https://trialguard-ai.vercel.app/](https://trialguard-ai.vercel.app/)  
+> 🎬 **Demo Video**: [https://youtu.be/FWkEpFx3yz0](https://youtu.be/FWkEpFx3yz0)
 
 ---
 

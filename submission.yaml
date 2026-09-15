@@ -16,6 +16,8 @@ team:
 
 submission:
   title: "TrialGuard AI — Clinical Trial Risk Monitor & Protocol Deviation Detector"
+  live_demo_url: "https://trialguard-ai.vercel.app/"
+  demo_video_url: "https://youtu.be/FWkEpFx3yz0"
 
   problem_statement: >
     Clinical trial sponsors and site monitors face critical risks when protocol deviations—such as missed visits, incorrect drug dosing, prohibited medication usage, and omitted safety lab draws—go undetected for weeks. Manual auditing leads to regulatory non-compliance, patient safety hazards, costly trial delays, and compromised trial data integrity.
